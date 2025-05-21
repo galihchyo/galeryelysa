@@ -1,152 +1,144 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Galeri Adek Elysa</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galeri Elysa</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: linear-gradient(to bottom right, #ffe4ec, #fff9c4);
-      color: #333;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
     }
 
-    header, .gallery, footer {
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s forwards;
-    }
-
-    header {
-      animation-delay: 0.2s;
-      text-align: center;
-      background-color: #ff90b3;
-      color: white;
-      padding: 30px 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 3em;
-      animation: bounce 1s infinite alternate, fadeInUp 1s forwards;
-    }
-
-    header p {
-      margin: 5px 0 0;
-      font-size: 1.2em;
+    h1 {
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
     }
 
     .gallery {
-      animation-delay: 0.6s;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 30px;
-    }
-
-    .image-card {
-      background-color: #fffaf0;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 4px 6px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      animation: fadeInUp 0.8s forwards;
-    }
-
-    .image-card:nth-child(1) { animation-delay: 0.8s; }
-    .image-card:nth-child(2) { animation-delay: 1s; }
-    .image-card:nth-child(3) { animation-delay: 1.2s; }
-    .image-card:nth-child(4) { animation-delay: 1.4s; }
-
-    .image-card:hover {
-      transform: scale(1.05);
-      box-shadow: 6px 8px 20px rgba(0,0,0,0.15);
-    }
-
-    .image-card img {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
       width: 100%;
-      display: block;
+      max-width: 900px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+      cursor: pointer;
+    }
+
+    .gallery img.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     footer {
-      animation-delay: 1.6s;
+      margin-top: 40px;
+      color: white;
+      font-style: italic;
       text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      color: #666;
     }
 
-    @keyframes bounce {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-10px); }
+    /* Lightbox popup */
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .popup img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .popup.active {
+      display: flex;
+    }
+
+    .popup::after {
+      content: '×';
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Galeri Adek Elysa</h1>
-    <p>Foto Foto Adek Elysa Yang Lucu Lucu!</p>
-  </header>
+  <h1>Galeri Dedek</h1>
 
-  <main class="gallery">
-    <div class="image-card">
-      <img src="1.jpg" alt="Foto Elysa">
-    </div>
-    <div class="image-card">
-      <img src="2.jpg" alt="Foto Elysa">
-    </div>
-    <div class="image-card">
-      <img src="3.jpg" alt="Foto Elysa">
-    </div>
-    <div class="image-card">
-      <img src="4.jpg" alt="Foto Elysa">
-    </div>
-     <div class="image-card">
-      <img src="5.jpg" alt="Foto Elysa">
-    </div>
-     <div class="image-card">
-      <img src="6.jpg" alt="Foto Elysa">
-    </div>
-    <div class="image-card">
-      <img src="7.jpg" alt="Foto Elysa">
-    </div>
-    <div class="image-card">
-      <img src="8.jpg" alt="Foto Elysa">
-    </div>
-     <div class="image-card">
-      <img src="9.jpg" alt="Foto Elysa">
-    </div>
-     <div class="image-card">
-      <img src="10.jpg" alt="Foto Elysa">
-    </div>
-    <div class="image-card">
-      <img src="11.jpg" alt="Foto Elysa">
-    <div class="image-card">
-      <img src="12.jpg" alt="Foto Elysa">
-    </div>
-    </div>
-  </main>
+  <div class="gallery">
+    <img src="3.jpg" alt="Foto 1">
+    <img src="5.jpg" alt="Foto 2">
+    <img src="8.jpg" alt="Foto 3">
+    <img src="9.jpg" alt="Foto 4">
+    <img src="11.jpg" alt="Foto 5">
+    <img src="12.jpg" alt="Foto 6">
+  </div>
 
   <footer>
-    &copy; 2025 Dibuat dengan sayang untuk adeekk
+     Foto Foto Dedek Elysa.<br>Yang Lucu Nan Mrnggemaskan
   </footer>
+
+  <!-- Popup Container -->
+  <div class="popup" id="popup">
+    <img src="" alt="popup" id="popupImg">
+  </div>
+
+  <script>
+    // Scroll animation
+    const images = document.querySelectorAll('.gallery img');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    images.forEach(img => observer.observe(img));
+
+    // Popup logic
+    const popup = document.getElementById('popup');
+    const popupImg = document.getElementById('popupImg');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        popupImg.src = img.src;
+        popup.classList.add('active');
+      });
+    });
+
+    popup.addEventListener('click', () => {
+      popup.classList.remove('active');
+    });
+  </script>
 
 </body>
 </html>
